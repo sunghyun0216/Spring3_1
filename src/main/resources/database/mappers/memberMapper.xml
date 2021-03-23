@@ -5,22 +5,21 @@
 
 <mapper namespace="com.iu.s3.member.MemberDAO">
 
-	<update id="memberUpdate" parameterType="MemberDTO">
+	<update id="memberUpdate" parameterType="com.iu.s3.member.MemberDTO">
 		update member set pw=#{pw}, name=#{name}, email=#{email}, phone=#{phone} where id=#{id}
 	</update>
 
-	<delete id="memberDelete" parameterType="MemberDTO">
+	<delete id="memberDelete" parameterType="com.iu.s3.member.MemberDTO">
 		delete member where id=#{id}
 	</delete>
 
-	<insert id="memberJoin" parameterType="MemberDTO">
+	<insert id="memberJoin" parameterType="com.iu.s3.member.MemberDTO">
 		insert into member values(#{id}, #{pw}, #{name}, #{phone}, #{email})
 	</insert>
 
-	<select id="memberLogin" parameterType="MemberDTO" resultType="MemberDTO">
+	<select id="memberLogin" parameterType="com.iu.s3.member.MemberDTO" resultType="com.iu.s3.member.MemberDTO">
 	
 		select * from member where id=#{id} and pw=#{pw}
 	</select>
-	
 
 </mapper>
