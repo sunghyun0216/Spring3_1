@@ -10,5 +10,7 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
+<a href="./bankbook/bankbookList"> BankBook List</a>  <!-- href -> 주소 넣는 속성 -->
+
 </body>
 </html>
