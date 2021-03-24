@@ -1,5 +1,7 @@
 package com.iu.s3.member;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +19,11 @@ public class MemberController {
 	public void memberLogin()throws Exception{}
 	
 	@RequestMapping(value="memberLogin", method = RequestMethod.POST)
-	public String memberLogin(MemberDTO memberDTO, Model model)throws Exception{
+	public String memberLogin(MemberDTO memberDTO, HttpSession session)throws Exception{
 		memberDTO = memberService.memberLogin(memberDTO);
 		System.out.println(memberDTO);
-		model.addAttribute("dto", memberDTO);
+		
+		session.setAttribute("member",memberDTO);
 		
 		return "redirect:../";
 	}
