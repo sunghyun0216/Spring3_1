@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  <configuration><!-- 설정하는부분 -->
+     <typeAliases><!-- 별칭주는 것 -->
+        <typeAlias type="com.wong.s3.member.MemberDTO" alias="MemberDTO"/> <!-- 별칭을 주고 싶은걸 풀패키지로 줌 -->
+         <typeAlias type="com.wong.s3.bankbook.BankBookDTO" alias="BankBookDTO"/>
+     </typeAliases>
+  
+  <mappers>
+     <mapper />
+  </mappers>
+  
+  
+  
+  </configuration>
