@@ -14,6 +14,8 @@
 	<h3>Name : ${dto.bookName}</h3>
 	<h3>Number : ${dto.bookNumber}</h3>
 	
+	<a href=" "> 계좌 개설</a>
+	
 	<c:catch> <!-- 자바에서의 try catch랑 같은거라 생각하면됨 -->
 	<c:if test="${member.id eq 'admin'}">
 	<a href="./bankbookDelete?bookNumber=${dto.bookNumber}">Delete</a> 

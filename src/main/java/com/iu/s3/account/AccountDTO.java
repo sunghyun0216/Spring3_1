@@ -1,10 +1,12 @@
 package com.iu.s3.account;
 
+import java.sql.Date;
+
 public class AccountDTO {
 	
 	private String accountNumber;
 	private long accountBalance;
-	private long accountDate;
+	private Date accountDate;
 	private String id;
 	private long bookNumber;
 	
@@ -20,10 +22,10 @@ public class AccountDTO {
 	public void setAccountBalance(long accountBalance) {
 		this.accountBalance = accountBalance;
 	}
-	public long getAccountDate() {
+	public Date getAccountDate() {
 		return accountDate;
 	}
-	public void setAccountDate(long accountDate) {
+	public void setAccountDate(Date accountDate) {
 		this.accountDate = accountDate;
 	}
 	public String getId() {
@@ -38,6 +40,8 @@ public class AccountDTO {
 	public void setBookNumber(long bookNumber) {
 		this.bookNumber = bookNumber;
 	}
+	
+	
 	
 	
 	

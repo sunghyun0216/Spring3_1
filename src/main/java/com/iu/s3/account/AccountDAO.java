@@ -11,10 +11,14 @@ public class AccountDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NAMESPACE="com.iu.s3.account.AccountDAO";
+	private final String NAMESPACE="com.iu.s3.account.AccountDAO.";
 	
-	public List<AccountDTO> getList()throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getList");
+	public List<AccountDTO> getList(AccountDTO accountDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getList", accountDTO);
 	}
 	
+	public int setInsert(AccountDTO accountDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setInsert", accountDTO);
+	}
+
 }

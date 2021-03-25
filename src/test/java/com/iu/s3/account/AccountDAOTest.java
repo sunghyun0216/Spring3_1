@@ -9,14 +9,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.iu.s3.MyAbstractTest;
 
-public class AccountDAOTest extends MyAbstractTest {
+public class AccountDAOTest extends MyAbstractTest{
+
 
 	@Autowired
 	private AccountDAO accountDAO;
 	
 	@Test
 	public void getListTest()throws Exception{
-		List<AccountDTO> ar = accountDAO.getList();
+		AccountDTO accountDTO = new AccountDTO();
+		accountDTO.setId("test234");
+		
+		List<AccountDTO> ar = accountDAO.getList(accountDTO);
+		
 		assertNotEquals(0, ar.size());
 	}
+	
+	@Test
+	public void setInsertTest()throws Exception{
+		AccountDTO accountDTO = new AccountDTO();
+		accountDTO.setAccountNumber("125-345-6789");
+		accountDTO.setAccountBalance(0);
+		accountDTO.setId("id1");
+		accountDTO.setBookNumber(3);
+		int result = accountDAO.setInsert(accountDTO);
+		assertEquals(1, result);
+	}
+
 }
