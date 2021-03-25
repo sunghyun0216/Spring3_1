@@ -13,6 +13,7 @@
 <P>  The time on the server is ${serverTime}. </P>
 <a href="./bankbook/bankbookList"> BankBook List</a>  <!-- href -> 주소 넣는 속성 -->
 
+
 <c:if test="${empty member}">
 <a href="./member/memberJoin">Join</a> <!-- 입력폼이 나와야함 --> <!-- 서비스랑 컨트롤러 만들어서 -->
 <a href="./member/memberLogin">Login</a> <!-- 입력폼이 나와야함 id/pw 등나와야함 -->
