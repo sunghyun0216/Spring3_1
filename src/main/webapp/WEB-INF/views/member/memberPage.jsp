@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>Member page</h2>
+	<h3>${member.id}</h3>
+	<h3>${member.name}</h3>
+	<h3>${member.email}</h3>
+	<h3>${member.phone}</h3>
+	<a href="./memberDelete">탈퇴</a>
+	
+</body>
+</html>
