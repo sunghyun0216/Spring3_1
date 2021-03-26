@@ -13,7 +13,7 @@ public class NoticeDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NAMESPACE="com.iu.s3.notice.NoticeDAO";
+	private final String NAMESPACE="com.iu.s3.notice.NoticeDAO.";
 	
 	public List<NoticeDTO> getList()throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getList");
