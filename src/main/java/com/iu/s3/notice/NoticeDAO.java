@@ -14,14 +14,15 @@ public class NoticeDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.iu.s3.notice.NoticeDAO.";
-	
+
 	public List<NoticeDTO> getList()throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getList");
 	}
-	
-	public BankBookDTO getSelect(BankBookDTO bankBookDTO)throws Exception{
-		bankBookDTO = sqlSession.selectOne(NAMESPACE+"getSelect", bankBookDTO);
-		return bankBookDTO;
+
+	public NoticeDTO getSelect(NoticeDTO noticeDTO)throws Exception{
+		noticeDTO= sqlSession.selectOne(NAMESPACE+"getSelect", noticeDTO);
+		return noticeDTO;
 	}
-	
+
+
 }
