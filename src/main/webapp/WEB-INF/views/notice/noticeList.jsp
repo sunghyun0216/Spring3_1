@@ -25,25 +25,22 @@
 				<th>Num</th>
 				<th>Title</th>
 				<th>Writer</th>
-				<th>Hit</th>
 				<th>Regdate</th>
+				<th>Hit</th>
 			</tr>
 		</thead>
 		
 		<tbody>
-		<c:forEach items="${list}" var="notice">
+		<c:forEach items="${list}" var="dto">
 			<tr>
-				<td>${notice.num}</td>
-				<td><a href="./noticeSelect?title=${notice.title}">${notice.title}</a></td>
-				<td>${notice.writer}</td>
-				<td>${notice.hit}</td>
-				<td>${notice.regdate}</td>
+				<td>${dto.num}</td>
+				<td><a href="./noticeSelect?num=${dto.num}">${dto.title}</a></td>
+				<td>${dto.writer}</td>
+				<td>${dto.regdate}</td>
+				<td>${dto.hit}</td>
 			</tr>
 		</c:forEach>
 		</tbody>
-		
-	
 	</table>
-
 </body>
 </html>

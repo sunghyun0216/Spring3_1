@@ -24,7 +24,12 @@ public class NoticeController {
 	@RequestMapping(value="noticeSelect")
 	public ModelAndView getSelect(NoticeDTO noticeDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
+
+//		System.out.println(noticeDTO.getNum()); /값 확인
 		noticeDTO = noticeService.getSelect(noticeDTO);
+		
+//		System.out.println(noticeDTO.getNum());
+//		System.out.println(noticeDTO.getTitle());
 		mv.addObject("dto", noticeDTO);
 		mv.setViewName("notice/noticeSelect");
 		return mv;
