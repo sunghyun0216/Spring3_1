@@ -18,11 +18,11 @@
 	<h2>Notice Update Form</h2>
 	
 	<form action="./noticeUpdate" method="post">
+	  <input type="hidden" name="num" value="${dto.num}"><br>
 	  Title : <input type="text" name="title" value= "${dto.title}"><br>
 	  Contents : <input type="text" name="contents" value="${dto.contents}"><br>
 		<button>Update</button>
 	</form>
-	
 	
 </body>
 </html>

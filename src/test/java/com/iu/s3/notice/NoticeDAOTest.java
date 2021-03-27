@@ -16,15 +16,25 @@ public class NoticeDAOTest extends MyAbstractTest {
 	private NoticeDAO noticeDAO;
 	
 	@Test
+	public void setDeleteTest()throws Exception{
+		NoticeDTO noticeDTO = new NoticeDTO();
+		noticeDTO.setNum(4);
+		
+		int result = noticeDAO.setDelete(noticeDTO);
+		assertEquals(1, result);
+	}
+	
+	
+	@Test
 	public void setUpdateTest()throws Exception{
 		NoticeDTO noticeDTO = new NoticeDTO();
-		noticeDTO.setNum(3);
+		noticeDTO.setNum(1);
 		
 		noticeDTO = noticeDAO.getSelect(noticeDTO);
 		
 		System.out.println(noticeDTO.getNum());
 		System.out.println(noticeDTO.getTitle());
-		noticeDTO.setTitle("아이유 3집");
+		noticeDTO.setTitle("아이유 1집");
 	    noticeDTO.setContents("너랑나");
 		
 		int result = noticeDAO.setUpdate(noticeDTO);

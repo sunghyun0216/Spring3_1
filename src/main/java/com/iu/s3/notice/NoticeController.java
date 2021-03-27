@@ -16,6 +16,13 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
+	@RequestMapping(value="noticeDelete")
+	public String setDelete(NoticeDTO noticeDTO)throws Exception{
+		int result = noticeService.setDelete(noticeDTO);
+		return "redirect:./noticeList";
+	}
+	
+	
 	@RequestMapping(value="noticeUpdate")
 	public void setUpdate(NoticeDTO noticeDTO, Model model)throws Exception{
 		noticeDTO = noticeService.getSelect(noticeDTO);
@@ -24,13 +31,14 @@ public class NoticeController {
 	
 	@RequestMapping(value="noticeUpdate", method = RequestMethod.POST)
 	public String setUpdate(NoticeDTO noticeDTO)throws Exception{
+		System.out.println();
 		int result = noticeService.setUpdate(noticeDTO);
-			return "redirect:./noticeList";
+		
+		return "redirect:./noticeList";
 		
 	}
 	
-	
-	
+
 	@RequestMapping(value="noticeList")
 	public void getList(Model model)throws Exception{
 		List<NoticeDTO> ar = noticeService.getList();
