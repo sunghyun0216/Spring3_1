@@ -13,5 +13,10 @@
 		select * from notice where num=#{num}
 	</select>
 
+	<update id="setUpdate" parameterType="com.iu.s3.notice.NoticeDTO">
+		update notice set title=#{title}, contents=#{contents} where num=#{num}
+		
+	</update>
+	
 
 </mapper>  

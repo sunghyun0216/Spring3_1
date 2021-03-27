@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.iu.s3.bankbook.BankBookDTO;
+import com.iu.s3.member.MemberDTO;
 
 @Repository
 public class NoticeDAO {
@@ -23,6 +24,9 @@ public class NoticeDAO {
 		noticeDTO= sqlSession.selectOne(NAMESPACE+"getSelect", noticeDTO);
 		return noticeDTO;
 	}
-
+	
+	public int setUpdate(NoticeDTO noticeDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setUpdate", noticeDTO);
+	}
 
 }

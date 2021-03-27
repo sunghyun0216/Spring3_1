@@ -39,7 +39,10 @@
 	</table>
 	
 	<h3>contents</h3>
-	${dto.contents}
+	${dto.contents}<br>
+	
+	<a href="./noticeDelete?num=${dto.num}">Delete</a>
+	<a href="./noticeUpdate?num=${dto.num}">Update</a><br>
 	
 </body>
 </html>

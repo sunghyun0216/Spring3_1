@@ -16,6 +16,23 @@ public class NoticeDAOTest extends MyAbstractTest {
 	private NoticeDAO noticeDAO;
 	
 	@Test
+	public void setUpdateTest()throws Exception{
+		NoticeDTO noticeDTO = new NoticeDTO();
+		noticeDTO.setNum(3);
+		
+		noticeDTO = noticeDAO.getSelect(noticeDTO);
+		
+		System.out.println(noticeDTO.getNum());
+		System.out.println(noticeDTO.getTitle());
+		noticeDTO.setTitle("아이유 3집");
+	    noticeDTO.setContents("너랑나");
+		
+		int result = noticeDAO.setUpdate(noticeDTO);
+		
+		assertEquals(1, result);
+	}
+	
+	@Test
 	public void getListTest()throws Exception{
 		List<NoticeDTO> ar = noticeDAO.getList();
 		assertNotEquals(0, ar.size());
@@ -29,8 +46,10 @@ public class NoticeDAOTest extends MyAbstractTest {
 		noticeDTO.setWriter("iu");
 		noticeDTO.setContents("과제는 무서워");
 		noticeDTO.setHit(1);
-		noticeDTO.setRegdate(null);
-		
+		noticeDTO.setRegdate(null);	
 	}
+	
+	
+	
 
 }
