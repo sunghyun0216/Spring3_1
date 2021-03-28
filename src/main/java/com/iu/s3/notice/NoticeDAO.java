@@ -15,6 +15,11 @@ public class NoticeDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.iu.s3.notice.NoticeDAO.";
+	
+	public int setInsert(NoticeDTO noticeDTO)throws Exception{
+		int result = sqlSession.insert(NAMESPACE+"setInsert", noticeDTO);
+		return result;
+	}
 
 	public List<NoticeDTO> getList()throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getList");

@@ -16,6 +16,20 @@ public class NoticeDAOTest extends MyAbstractTest {
 	private NoticeDAO noticeDAO;
 	
 	@Test
+	public void setInsertTest()throws Exception{
+		NoticeDTO noticeDTO = new NoticeDTO();
+		noticeDTO.setNum(1);
+		noticeDTO.setTitle("title");
+		noticeDTO.setWriter("iu");
+		noticeDTO.setContents("iu iu iu");
+		noticeDTO.setRegdate(null);
+		noticeDTO.setHit(1);
+		
+		int result = noticeDAO.setInsert(noticeDTO);
+		assertEquals(1, result);
+	}
+	
+	//@Test
 	public void setDeleteTest()throws Exception{
 		NoticeDTO noticeDTO = new NoticeDTO();
 		noticeDTO.setNum(4);
@@ -25,7 +39,7 @@ public class NoticeDAOTest extends MyAbstractTest {
 	}
 	
 	
-	@Test
+	//@Test
 	public void setUpdateTest()throws Exception{
 		NoticeDTO noticeDTO = new NoticeDTO();
 		noticeDTO.setNum(1);

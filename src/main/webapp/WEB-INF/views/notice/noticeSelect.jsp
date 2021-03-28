@@ -41,8 +41,12 @@
 	<h3>contents</h3>
 	${dto.contents}<br>
 	
+	<c:catch>
+	<c:if test="${member.id eq 'admim'}">
 	<a href="./noticeDelete?num=${dto.num}">Delete</a>
 	<a href="./noticeUpdate?num=${dto.num}">Update</a><br>
+	</c:if>
+	</c:catch>
 	
 </body>
 </html>
