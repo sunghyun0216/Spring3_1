@@ -42,5 +42,6 @@
 		</c:forEach>
 		</tbody>
 	</table>
+	<button><a href="./noticeInsert?num=${dto.num}">게시물작성</a></button><br>
 </body>
 </html>

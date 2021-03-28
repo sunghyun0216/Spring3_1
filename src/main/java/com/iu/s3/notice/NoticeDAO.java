@@ -17,8 +17,7 @@ public class NoticeDAO {
 	private final String NAMESPACE="com.iu.s3.notice.NoticeDAO.";
 	
 	public int setInsert(NoticeDTO noticeDTO)throws Exception{
-		int result = sqlSession.insert(NAMESPACE+"setInsert", noticeDTO);
-		return result;
+		return sqlSession.insert(NAMESPACE+"setInsert", noticeDTO);
 	}
 
 	public List<NoticeDTO> getList()throws Exception{
