@@ -14,51 +14,56 @@ public class NoticeDAOTest extends MyAbstractTest {
 
 	@Autowired
 	private NoticeDAO noticeDAO;
-	  	
+
 	@Test
 	public void setInsertTest()throws Exception{
-		NoticeDTO noticeDTO = new NoticeDTO();
-		  noticeDTO.setTitle("t5");
-	      noticeDTO.setContents("lolin");
-	      noticeDTO.setWriter("iu5");
+		for(int i=0; i<120; i++) { // 페이징 처리 *핵심..
+			NoticeDTO noticeDTO = new NoticeDTO();
+			noticeDTO.setTitle("t5"+i);
+			noticeDTO.setContents("lolin"+i);
+			noticeDTO.setWriter("iu5+"+i);
+			
+			int result = noticeDAO.setInsert(noticeDTO);
+			if(i%10==0) {
+				Thread.sleep(500);				
+			}
+		}
 		
-		int result = noticeDAO.setInsert(noticeDTO);
-		assertEquals(1, result);
 	}
-	
+
 	//@Test
 	public void setDeleteTest()throws Exception{
 		NoticeDTO noticeDTO = new NoticeDTO();
 		noticeDTO.setNum(4);
-		
+
 		int result = noticeDAO.setDelete(noticeDTO);
 		assertEquals(1, result);
 	}
-	
-	
+
+
 	//@Test
 	public void setUpdateTest()throws Exception{
 		NoticeDTO noticeDTO = new NoticeDTO();
 		noticeDTO.setNum(1);
-		
+
 		noticeDTO = noticeDAO.getSelect(noticeDTO);
-		
+
 		System.out.println(noticeDTO.getNum());
 		System.out.println(noticeDTO.getTitle());
 		noticeDTO.setTitle("아이유 1집");
-	    noticeDTO.setContents("너랑나");
-		
+		noticeDTO.setContents("너랑나");
+
 		int result = noticeDAO.setUpdate(noticeDTO);
-		
+
 		assertEquals(1, result);
 	}
-	
+
 	@Test
 	public void getListTest()throws Exception{
 		List<NoticeDTO> ar = noticeDAO.getList();
 		assertNotEquals(0, ar.size());
 	}
-	
+
 	@Test
 	public void getSelectTest()throws Exception{
 		NoticeDTO noticeDTO = new NoticeDTO();
@@ -69,8 +74,8 @@ public class NoticeDAOTest extends MyAbstractTest {
 		noticeDTO.setHit(1);
 		noticeDTO.setRegdate(null);	
 	}
-	
-	
-	
+
+
+
 
 }

@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.iu.s3.util.Pager;
+
 @Service
 public class NoticeService {
  
@@ -18,7 +20,11 @@ public class NoticeService {
 	}
 	
 	public List<NoticeDTO> getList()throws Exception{
-		return noticeDAO.getList();
+		Pager pager = new Pager();
+		pager.setStartRow(11);
+		pager.setLastRow(20);
+		
+		return noticeDAO.getList(pager);
 	}
 	
 	public NoticeDTO getSelect(NoticeDTO noticeDTO)throws Exception{
