@@ -6,16 +6,19 @@
 
 <mapper namespace="com.iu.s3.notice.NoticeDAO">
 
+	<select id="getTotalCount" resultType="java.lang.Long">
+		select count(num) from notice
+	</select>
+
 	<insert id="setInsert" parameterType="com.iu.s3.notice.NoticeDTO">
       insert into notice values (notice_seq.nextval, #{title}, #{writer}, #{contents}, 0, sysdate) 
     </insert>
-	
 
- <select id="getList" resultType="NoticeDTO" parameterType="Pager">
+   <select id="getList" resultType="NoticeDTO" parameterType="Pager">
      select * from
       (select rownum R, N.* from
-         (select * from notice order by num desc) N ) 
-            where R between #{startRow} and #{lastRow}
+      (select * from notice where num>0 order by num desc) N ) 
+  		 where R   between #{startRow} and #{lastRow}
    </select>
 	
 	<select id="getSelect" parameterType="com.iu.s3.notice.NoticeDTO" resultType="com.iu.s3.notice.NoticeDTO">

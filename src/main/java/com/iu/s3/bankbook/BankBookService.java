@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.iu.s3.notice.NoticeDAO;
+import com.iu.s3.util.Pager;
+
 @Service
 public class BankBookService {
    
@@ -20,8 +23,45 @@ public class BankBookService {
       return bankBookDAO.setDelete(bankBookDTO);
    }
    
-   public List<BankBookDTO> getList()throws Exception{
-      return bankBookDAO.getList();
+   public List<BankBookDTO> getList(Pager pager)throws Exception{
+	   
+	   int perPage=10;
+	   int perBlock=5;
+	   
+	   long startRow =(pager.getCurPage()-1)*perPage+1;
+	   long lastRow =pager.getCurPage()*perPage;
+	   
+	   pager.setStartNum(startRow);
+	   pager.setLastNum(lastRow);
+	   
+	   long totalCount = bankBookDAO.getTotalCount();
+	   
+	   long totalPage = totalCount/perPage;
+	   if(totalCount%perPage !=0) {
+		   totalPage++;
+	   }
+	   
+	   long totalBlock = totalPage/perBlock;
+	   if(totalPage%5 !=0) {
+		   totalBlock++;
+	   }
+	   
+	   long curBlock = pager.getCurPage()/perBlock;
+	   if(pager.getCurPage()%perBlock !=0) {
+		   curBlock++;
+	   }
+	   
+	   long startNum = (curBlock-1)*perBlock+1;
+	   long lastNum = curBlock*perBlock;
+	   
+	   pager.setStartNum(startNum);
+	   pager.setLastNum(lastNum);
+	   
+	   System.out.println("totlalpage :"+totalPage);
+	   System.out.println("totalblock :"+totalBlock);
+	   System.out.println("curblock :"+curBlock);
+	   
+      return bankBookDAO.getList(pager);
    }
    
    public BankBookDTO getSelect(BankBookDTO bankBookDTO) throws Exception{

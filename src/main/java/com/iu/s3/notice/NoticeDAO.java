@@ -30,11 +30,15 @@ public class NoticeDAO {
 //		HashMap<String, Long> map = new HashMap<String, Long>(); //map은 key와 value 형식으로 되어있음
 //		map.put("startRow", 1L);
 //		map.put("lastRow", 10L);
-		
-		
 		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
-
+	
+	public Long getTotalCount()throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount");
+	}
+	
+	
+	
 	public NoticeDTO getSelect(NoticeDTO noticeDTO)throws Exception{
 		noticeDTO= sqlSession.selectOne(NAMESPACE+"getSelect", noticeDTO);
 		return noticeDTO;
