@@ -15,7 +15,6 @@ public class NoticeService {
 	private NoticeDAO noticeDAO;
 	
 	public int setInsert(NoticeDTO noticeDTO)throws Exception{
-		Calendar ca = Calendar.getInstance();
 		return noticeDAO.setInsert(noticeDTO);
 	}
 	
@@ -33,7 +32,7 @@ public class NoticeService {
 		
 		  //--------------------------------
 		  //1. totalCount
-		  long totalCount= noticeDAO.getTotalCount();
+		  long totalCount= noticeDAO.getTotalCount(pager);
 		  
 		  //2. totalPage
 		  long totalPage = totalCount / perPage;	//10

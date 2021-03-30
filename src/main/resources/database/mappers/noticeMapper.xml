@@ -6,33 +6,74 @@
 
 <mapper namespace="com.iu.s3.notice.NoticeDAO">
 
-	<select id="getTotalCount" resultType="java.lang.Long">
+	<select id="getTotalCount" resultType="Long"
+		parameterType="Pager">
 		select count(num) from notice
+		where
+		<choose>
+			<when test="kind == 'Writer'">
+				writer
+			</when>
+			<when test="kind == 'Contents'">
+				contents
+			</when>
+
+			<otherwise>
+				title
+			</otherwise>
+		</choose>
+		like '%'||#{search}||'%' and num >0
 	</select>
 
-	<insert id="setInsert" parameterType="com.iu.s3.notice.NoticeDTO">
-      insert into notice values (notice_seq.nextval, #{title}, #{writer}, #{contents}, 0, sysdate) 
-    </insert>
+	<insert id="setInsert"
+		parameterType="com.iu.s3.notice.NoticeDTO">
+		insert into notice values (notice_seq.nextval, #{title},
+		#{writer}, #{contents}, 0, sysdate)
+	</insert>
 
-   <select id="getList" resultType="NoticeDTO" parameterType="Pager">
-     select * from
-      (select rownum R, N.* from
-      (select * from notice where num>0 order by num desc) N ) 
-  		 where R   between #{startRow} and #{lastRow}
-   </select>
-	
-	<select id="getSelect" parameterType="com.iu.s3.notice.NoticeDTO" resultType="com.iu.s3.notice.NoticeDTO">
+	<select id="getList" resultType="NoticeDTO"
+		parameterType="Pager">
+		select * from
+		(select rownum R, N.* from
+		(select * from notice where
+		<choose>
+			<when test="kind=='Writer'">
+				writer
+			</when>
+
+			<when test="kind =='Contents'">
+				contents
+			</when>
+
+			<otherwise>
+				title
+			</otherwise>
+
+		</choose>
+
+
+		like '%' || #{search} || '%' and num > 0 order by num desc) N)
+		where R
+		between #{startRow} and #{lastRow}
+	</select>
+
+	<select id="getSelect"
+		parameterType="com.iu.s3.notice.NoticeDTO"
+		resultType="com.iu.s3.notice.NoticeDTO">
 		select * from notice where num=#{num}
 	</select>
 
-	<update id="setUpdate" parameterType="com.iu.s3.notice.NoticeDTO">
-		update notice set title=#{title}, contents=#{contents} where num=#{num}
+	<update id="setUpdate"
+		parameterType="com.iu.s3.notice.NoticeDTO">
+		update notice set title=#{title}, contents=#{contents}
+		where num=#{num}
 	</update>
-	
-	<delete id="setDelete" parameterType="com.iu.s3.notice.NoticeDTO">
+
+	<delete id="setDelete"
+		parameterType="com.iu.s3.notice.NoticeDTO">
 		delete notice where num=#{num}
-	
+
 	</delete>
-	
+
 
 </mapper>  

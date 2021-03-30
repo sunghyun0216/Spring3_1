@@ -29,6 +29,7 @@ public class NoticeController {
 	public String setInsert(NoticeDTO noticeDTO) throws Exception {
 		int result = noticeService.setInsert(noticeDTO);
 		return "redirect:./noticeList";
+		
 	}
 
 	@RequestMapping(value="noticeDelete")
