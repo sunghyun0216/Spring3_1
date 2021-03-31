@@ -31,6 +31,7 @@
             <label for="pw">Password</label>
              <input type="password" class="form-control" id="pw" name="pw">
          </div>
+         
          <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Check me

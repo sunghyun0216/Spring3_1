@@ -63,6 +63,9 @@ public class MemberController {
 	@RequestMapping("memberJoin")
 	public void memberJoin()throws Exception{}
 	
+	@RequestMapping("memberJoinCheck")
+	public void memberJoinCheck()throws Exception{}
+	
 	@RequestMapping(value="memberJoin", method = RequestMethod.POST)
 	public String memberJoin(MemberDTO memberDTO)throws Exception{
 		int result = memberService.memberJoin(memberDTO);
