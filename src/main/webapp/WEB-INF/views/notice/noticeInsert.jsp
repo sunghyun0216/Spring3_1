@@ -21,7 +21,7 @@
          
          <div class="form-group">
             <label for="title">타이틀</label> 
-            <input type="text" class="form-control" id="title" name="title"> 
+            <input type="text" class="form-control" id="title" name="title" > 
          </div>         
          
          <div class="form-group">
