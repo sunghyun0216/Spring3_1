@@ -1,15 +1,19 @@
 /**
  * 
  */
-function insertCheck(){
 
-	let result = document.getElementById("title");
+let frm = document.getElementById("frm");
+let writer = document.getElementById("writer");
+let title = document.getElementById("title");
+let btn = document.getElementById("btn");
+
+btn.addEventListener("click", function(){
+	let check1 = writer.value== 'admin';
+	let check2 = title.value != "";
 	
-	if(result.value.length==0){
-		alert("Title을 입력해주세요");
-		return false;
-	} else {
-		alert("성공");
+	if(check1 && check2){
+		frm.submit();
+	}else {
+		alert("입력 항목을 확인 하세요");
 	}
-
-}
+});
