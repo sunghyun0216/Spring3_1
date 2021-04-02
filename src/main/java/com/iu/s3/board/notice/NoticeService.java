@@ -15,15 +15,11 @@ public class NoticeService implements BoardService {
 	@Autowired
 	private NoticeDAO noticeDAO;
 	
-	
-	
 	@Override
 	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return noticeDAO.getSelect(boardDTO);
 	}
-
-
 
 	@Override
 	public int setInsert(BoardDTO boardDTO) throws Exception {
@@ -31,23 +27,17 @@ public class NoticeService implements BoardService {
 		return noticeDAO.setInsert(boardDTO);
 	}
 
-
-
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return noticeDAO.setUpdate(boardDTO);
 	}
-
-
 
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return noticeDAO.setDelete(boardDTO);
 	}
-
-
 
 	public List<BoardDTO> getList(Pager pager)throws Exception{
 		int perPage=10; // 한페이지당 보여줄 글의 갯수

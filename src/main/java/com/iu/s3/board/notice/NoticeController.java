@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.s3.board.BoardDTO;
+import com.iu.s3.board.BoardService;
 import com.iu.s3.util.Pager;
 
 @Controller
@@ -20,6 +22,17 @@ public class NoticeController {
 	
 	@Autowired
 	private NoticeService noticeService;
+
+	@GetMapping("noticeUpdate")
+	public ModelAndView setUpdate(BoardDTO boardDTO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		boardDTO = noticeService.getSelect(boardDTO);
+		mv.addObject("dto", boardDTO);
+		mv.addObject("board", "notice");
+		mv.setViewName("board/boardUpdate");
+		return mv;
+	}
+	
 	
 	@GetMapping("noticeSelect")
 	public ModelAndView getSelect(BoardDTO boardDTO)throws Exception{
@@ -28,7 +41,6 @@ public class NoticeController {
 		mv.addObject("dto", boardDTO);
 		mv.addObject("board", "notice");
 		mv.setViewName("board/boardSelect");
-		
 		return mv;
 	}
 	
