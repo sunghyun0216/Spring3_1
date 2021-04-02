@@ -9,7 +9,7 @@ public class BoardDTO {
 	private String writer;
 	private String contents;
 	private int hit;
-	private Date regdate;
+	private Date regDate;
 	public int getNum() {
 		return num;
 	}
@@ -40,12 +40,13 @@ public class BoardDTO {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
-	public Date getRegdate() {
-		return regdate;
+	public Date getRegDate() {
+		return regDate;
 	}
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
+
 	
 	
 	

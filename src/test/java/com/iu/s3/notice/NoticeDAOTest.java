@@ -19,7 +19,7 @@ public class NoticeDAOTest extends MyAbstractTest {
 
 	@Test
 	public void setInsertTest()throws Exception{
-		for(int i=0; i<120; i++) { // 페이징 처리 *핵심..
+		for(int i=0; i<120; i++) { // 페이징 처리 *핵심.....
 			NoticeDTO noticeDTO = new NoticeDTO();
 			noticeDTO.setTitle("t5"+i);
 			noticeDTO.setContents("lolin"+i);
@@ -42,23 +42,23 @@ public class NoticeDAOTest extends MyAbstractTest {
 		assertEquals(1, result);
 	}
 
-
-	//@Test
-	public void setUpdateTest()throws Exception{
-		NoticeDTO noticeDTO = new NoticeDTO();
-		noticeDTO.setNum(1);
-
-		noticeDTO = noticeDAO.getSelect(noticeDTO);
-
-		System.out.println(noticeDTO.getNum());
-		System.out.println(noticeDTO.getTitle());
-		noticeDTO.setTitle("아이유 1집");
-		noticeDTO.setContents("너랑나");
-
-		int result = noticeDAO.setUpdate(noticeDTO);
-
-		assertEquals(1, result);
-	}
+//
+//	//@Test
+//	public void setUpdateTest()throws Exception{
+//		NoticeDTO noticeDTO = new NoticeDTO();
+//		noticeDTO.setNum(1);
+//
+//		noticeDTO = noticeDAO.getSelect(noticeDTO);
+//
+//		System.out.println(noticeDTO.getNum());
+//		System.out.println(noticeDTO.getTitle());
+//		noticeDTO.setTitle("아이유 1집");
+//		noticeDTO.setContents("너랑나");
+//
+//		int result = noticeDAO.setUpdate(noticeDTO);
+//
+//		assertEquals(1, result);
+//	}
 
 //	@Test
 //	public void getListTest()throws Exception{
@@ -66,16 +66,16 @@ public class NoticeDAOTest extends MyAbstractTest {
 //		assertNotEquals(0, ar.size());
 //	}
 
-	@Test
-	public void getSelectTest()throws Exception{
-		NoticeDTO noticeDTO = new NoticeDTO();
-		noticeDTO.setNum(1);
-		noticeDTO.setTitle("home");
-		noticeDTO.setWriter("iu");
-		noticeDTO.setContents("과제는 무서워");
-		noticeDTO.setHit(1);
-		noticeDTO.setRegdate(null);	
-	}
+//	@Test
+//	public void getSelectTest()throws Exception{
+//		NoticeDTO noticeDTO = new NoticeDTO();
+//		noticeDTO.setNum(1);
+//		noticeDTO.setTitle("home");
+//		noticeDTO.setWriter("iu");
+//		noticeDTO.setContents("과제는 무서워");
+//		noticeDTO.setHit(1);
+//		noticeDTO.setRegdate(null);	
+//	}
 
 
 

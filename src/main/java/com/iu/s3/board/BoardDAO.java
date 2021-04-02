@@ -2,25 +2,33 @@ package com.iu.s3.board;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
-import com.iu.s3.board.qna.QnaDAO;
 import com.iu.s3.util.Pager;
 
-@Repository
-public class BoardDAO implements QnaDAO{
+public interface BoardDAO {
+	//상수, 추상메서드
+	//접근 지정자는 무조건 public abstract
 	
-	@Autowired
-	private SqlSession sqlSession;
-	private final String NAMESPACE="com.iu.s3.board.qna.QnaDAO.";
 	
-	@Override
-	public List<BoardDTO> getList(Pager pager) throws Exception {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList(NAMESPACE+"getList");
-	}
+	//list
+	public List<BoardDTO> getList(Pager pager)throws Exception;
+	
+	//전체 글의 갯수
+	public long getTotalCount(Pager pager)throws Exception;
+	
+	//글 조회
+	public BoardDTO getSelect(BoardDTO boardDTO)throws Exception;
+	
+	//hit update
+	public int setHitUpdate(BoardDTO boardDTO)throws Exception;
+	
+	//글 추가
+	public int setInsert(BoardDTO boardDTO)throws Exception;
+	
+	//글 수정
+	public int setUpdate(BoardDTO boardDTO)throws Exception;
+	
+	//글 삭제
+	public int setDelete(BoardDTO boardDTO)throws Exception;
 	
 	
 	
