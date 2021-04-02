@@ -1,4 +1,4 @@
-package com.iu.s3.notice;
+package com.iu.s3.board.notice;
 
 import java.util.Calendar;
 import java.util.List;
@@ -6,10 +6,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.iu.s3.board.BoardDTO;
+import com.iu.s3.board.BoardService;
 import com.iu.s3.util.Pager;
 
 @Service
-public class NoticeService {
+public class NoticeService implements BoardService{
  
 	@Autowired
 	private NoticeDAO noticeDAO;
@@ -18,7 +20,7 @@ public class NoticeService {
 		return noticeDAO.setInsert(noticeDTO);
 	}
 	
-	public List<NoticeDTO> getList(Pager pager)throws Exception{
+	public List<BoardDTO> getList(Pager pager)throws Exception{
 		  int perPage= 10; // 한페이지당 보여줄 글의 갯수
 		  int perBlock=5;  // 한 블럭당 보여줄 숫자의 갯수
 		  

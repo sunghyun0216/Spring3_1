@@ -1,4 +1,4 @@
-package com.iu.s3.notice;
+package com.iu.s3.board.notice;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,15 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.iu.s3.bankbook.BankBookDTO;
+import com.iu.s3.board.BoardDTO;
+import com.iu.s3.board.qna.QnaDAO;
 import com.iu.s3.member.MemberDTO;
 import com.iu.s3.util.Pager;
 
 @Repository
-public class NoticeDAO {
+public class NoticeDAO implements QnaDAO{
 	
 	@Autowired
 	private SqlSession sqlSession;
-	private final String NAMESPACE="com.iu.s3.notice.NoticeDAO.";
+	private final String NAMESPACE="com.iu.s3.board.notice.NoticeDAO.";
 	
 	public void setHitUpdate (NoticeDTO noticeDTO)throws Exception{
 		
@@ -26,13 +28,13 @@ public class NoticeDAO {
 		return sqlSession.insert(NAMESPACE+"setInsert", noticeDTO);
 	}
 
-	public List<NoticeDTO> getList(Pager pager)throws Exception{
-//		HashMap<String, Long> map = new HashMap<String, Long>(); //map은 key와 value 형식으로 되어있음
-//		map.put("startRow", 1L);
-//		map.put("lastRow", 10L);
+	
+	@Override
+	public List<BoardDTO> getList(Pager pager) throws Exception {
+		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE+"getList", pager);
 	}
-	
+
 	public Long getTotalCount(Pager pager)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}

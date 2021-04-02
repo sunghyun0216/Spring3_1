@@ -1,15 +1,15 @@
-package com.iu.s3.notice;
+package com.iu.s3.board;
 
 import java.util.Date;
 
-public class NoticeDTO {
+public class BoardDTO {
+	
 	private int num;
 	private String title;
 	private String writer;
 	private String contents;
 	private int hit;
 	private Date regdate;
-	
 	public int getNum() {
 		return num;
 	}
@@ -50,5 +50,3 @@ public class NoticeDTO {
 	
 	
 }
-
-
