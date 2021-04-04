@@ -12,7 +12,7 @@
 <c:import url="../template/header.jsp"></c:import>
 <div class="container">
 		<div>
-			<img alt="" src="../images/iu1.jpeg">
+			<img alt="" src="../images/iu1.jpg">
 		</div>
 	
 			<h2>${board} List</h2>

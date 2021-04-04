@@ -5,10 +5,13 @@
 
 <mapper namespace="com.iu.s3.board.notice.NoticeDAO">
 
+	<delete id="setDelete" parameterType="BoardDTO">
+		delete notice where num=#{num}
+	</delete>
+
 	<update id="setUpdate" parameterType="BoardDTO">
 		 update notice set title=#{title}, contents=#{contents} where num=#{num}
 	</update>
-
 
 	<select id="getSelect" parameterType="BoardDTO" resultType="NoticeDTO">
 		select * from notice where num=#{num}
