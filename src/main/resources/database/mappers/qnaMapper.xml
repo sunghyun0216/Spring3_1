@@ -5,6 +5,14 @@
 
 <mapper namespace="com.iu.s3.board.qna.QnaDAO">
 
+	<update id="setReplyUpdate" parameterType="QnaDTO">
+		update qna set step=step+1 where ref=#{ref} and step > #{step}
+	</update>
+
+	<insert id="setReply" parameterType="QnaDTO">
+		insert into qna values(qna_seq.nextval, #{title}, #{writer}, #{contents}, 0, sysdate, #{ref}, #{step}, #{dept})
+	</insert>
+
 	<delete id="setDelete" parameterType="BoardDTO">
 		delete qna where num=#{num}
 	</delete>
