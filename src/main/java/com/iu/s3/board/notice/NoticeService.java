@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.iu.s3.board.BoardDTO;
 import com.iu.s3.board.BoardService;
+import com.iu.s3.board.qna.QnaDTO;
 import com.iu.s3.util.Pager;
+import com.iu.s3.util.Pager_backUp;
 
 @Service
 public class NoticeService implements BoardService {
@@ -15,11 +17,16 @@ public class NoticeService implements BoardService {
 	@Autowired
 	private NoticeDAO noticeDAO;
 	
+
+	
+	
 	@Override
 	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return noticeDAO.getSelect(boardDTO);
 	}
+
+
 
 	@Override
 	public int setInsert(BoardDTO boardDTO) throws Exception {
@@ -27,26 +34,33 @@ public class NoticeService implements BoardService {
 		return noticeDAO.setInsert(boardDTO);
 	}
 
+
+
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return noticeDAO.setUpdate(boardDTO);
+		return 0;
 	}
+
+
 
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return noticeDAO.setDelete(boardDTO);
+		return 0;
 	}
 
+
+
 	public List<BoardDTO> getList(Pager pager)throws Exception{
-		
-		pager.makeRow();	
-		
-		//1. totalCount
-		long totalCount=noticeDAO.getTotalCount(pager);
+		// ---- startRow, lastRow ----
+		pager.makeRow();
+
+		// ---- 페이징 계산 -------------
+		long totalCount = noticeDAO.getTotalCount(pager);
 		pager.makeNum(totalCount);
-	
+		
+		
 		return noticeDAO.getList(pager);
 	}
 

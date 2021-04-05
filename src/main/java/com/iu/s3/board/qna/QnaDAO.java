@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.iu.s3.board.BoardDAO;
 import com.iu.s3.board.BoardDTO;
 import com.iu.s3.util.Pager;
+import com.iu.s3.util.Pager_backUp;
 
 @Repository
 public class QnaDAO implements BoardDAO{
@@ -34,7 +35,7 @@ public class QnaDAO implements BoardDAO{
 	@Override
 	public long getTotalCount(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
 
 	@Override

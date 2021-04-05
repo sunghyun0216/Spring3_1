@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.iu.s3.board.BoardDTO;
 import com.iu.s3.board.BoardService;
 import com.iu.s3.util.Pager;
+import com.iu.s3.util.Pager_backUp;
 
 @Service
 public class QnaService implements BoardService {
@@ -35,7 +36,14 @@ public class QnaService implements BoardService {
 
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
-		// TODO Auto-generated method stub
+		//1. row
+		pager.makeRow();
+		
+		//2. paging
+		long totalCount = qnaDAO.getTotalCount(pager);
+		pager.makeNum(totalCount);
+		
+		
 		return qnaDAO.getList(pager);
 	}
 

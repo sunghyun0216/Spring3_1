@@ -5,6 +5,25 @@
 
 <mapper namespace="com.iu.s3.board.qna.QnaDAO">
 
+	<select id="getTotalCount" resultType="Long" parameterType="Pager">
+		select count(num) from qna
+		where 
+		<choose>
+			<when test="kind == 'Writer'">
+				writer
+			</when>
+			<when test="kind == 'Contents'">
+				contents
+			</when>
+			
+			<otherwise>
+				title
+			</otherwise>
+		</choose>
+		like '%'||#{search}||'%' and num >0
+	</select>
+
+
 	<update id="setReplyUpdate" parameterType="QnaDTO">
 		update qna set step=step+1 where ref=#{ref} and step > #{step}
 	</update>
@@ -28,8 +47,44 @@
 	<select id="getList" resultType="QnaDTO" parameterType="Pager">
 	  select * from
 	  (select rownum R, Q.* from
-		(select * from qna order by ref desc, step asc) Q)
-	   <!-- where R between #{startRow} and #{lastRow} -->	
+		(select * from qna where
+		<choose>
+			<when test="kind == 'Writer'">
+				writer
+			</when>
+			<when test="kind == 'Contents'">
+				contents
+			</when>
+			
+			<otherwise>
+				title
+			</otherwise>
+		</choose>
+		like '%'||#{search}||'%' and num >0
+	</select>
+
+	<select id="getList" resultType="NoticeDTO" parameterType="Pager">
+		select * from
+			(select rownum R, N.* from
+				(select * from notice where
+					<choose>
+						<when test="kind=='Writer'">
+							writer
+						</when>
+						
+						<when test="kind =='Contents'">
+							contents
+						</when>
+						
+						<otherwise>
+							title
+						</otherwise>
+					
+					</choose>
+					
+					  like '%' || #{search} || '%' and num > 0 
+					 order by ref desc, step asc) Q)
+	  			  where R between #{startRow} and #{lastRow} 
 	</select>
 
 	<select id="getSelect" parameterType="BoardDTO" resultType="QnaDTO">

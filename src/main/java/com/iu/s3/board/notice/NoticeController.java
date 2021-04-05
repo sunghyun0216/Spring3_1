@@ -2,22 +2,18 @@ package com.iu.s3.board.notice;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.s3.board.BoardDTO;
-import com.iu.s3.board.BoardService;
-import com.iu.s3.member.MemberService;
 import com.iu.s3.util.Pager;
+import com.iu.s3.util.Pager_backUp;
 
 @Controller
 @RequestMapping("/notice/**")
@@ -26,30 +22,6 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
-	@GetMapping("noticeDelete")
-	public String setDelete(BoardDTO boardDTO)throws Exception{
-		int result = noticeService.setDelete(boardDTO);
-		
-		return "redirect:../";
-	}
-
-	
-	@GetMapping("noticeUpdate")
-	public ModelAndView setUpdate(BoardDTO boardDTO, ModelAndView mv)throws Exception{
-		boardDTO = noticeService.getSelect(boardDTO);
-		mv.addObject("dto", boardDTO);
-		mv.addObject("board", "notice");
-		mv.setViewName("board/boardUpdate");
-		return mv;
-	}
-	
-	@PostMapping("noticeUpdate")
-	public String setUpdate(BoardDTO boardDTO)throws Exception{
-		int result = noticeService.setUpdate(boardDTO);
-		return "redirect:./boardList";
-	}
-	
-	
 	@GetMapping("noticeSelect")
 	public ModelAndView getSelect(BoardDTO boardDTO)throws Exception{
 		ModelAndView mv = new ModelAndView();
@@ -57,6 +29,7 @@ public class NoticeController {
 		mv.addObject("dto", boardDTO);
 		mv.addObject("board", "notice");
 		mv.setViewName("board/boardSelect");
+		
 		return mv;
 	}
 	
