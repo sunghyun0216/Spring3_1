@@ -1,11 +1,13 @@
 package com.iu.s3.util;
 
 public class Pager {
-
+	
+	private int perPage=10; // 한페이지당 보여줄 글의 갯수
+	private int perBlock=5;	// 한 블럭당 보여줄 숫자의 갯수
+	
 	private long startRow;
 	private long lastRow;
 	private long curPage;
-	
 
 	private long startNum;
 	private long lastNum;
@@ -85,5 +87,57 @@ public class Pager {
 		this.lastRow = lastRow;
 	}
 	
+	public void makeRow() {
+		// ---- startRow, lastRow ----
+		long startRow = (this.getCurPage()-1)*perPage+1;
+		long lastRow = this.getCurPage()*perPage;
+		
+		this.setStartRow(startRow);
+		this.setLastRow(lastRow);
+	}
+	
+	public void makeNum(long totalCount) {
+				//2. totalPage
+				long totalPage = totalCount / perPage;		//11
+				if(totalCount%perPage != 0) {
+					totalPage++;
+				}
+				
+				//3. totalBlock
+				long totalBlock = totalPage / perBlock;
+				if(totalPage%5 != 0) {
+					totalBlock++;
+				}
+				
+				//4. curBlock
+				long curBlock = this.getCurPage()/perBlock;
+				if(this.getCurPage()%perBlock != 0) {
+					curBlock++;
+				}
+				
+				//5. startNum, lastNum
+				long startNum = (curBlock-1)*perBlock+1;
+				long lastNum = curBlock*perBlock;
+				
+				
+				//6. curBlock이 마지막 block일때(totalBlock)
+				if(curBlock == totalBlock) {
+					lastNum = totalPage;
+				}
+				
+				//7. 이전, 다음 block 존재 여부
+				//이전
+				if(curBlock != 1) {
+					this.setPre(true);
+				}
+				
+				//다음
+				if(curBlock != totalBlock) {
+					this.setNext(true);
+				}
+				
+				this.setStartNum(startNum);
+				this.setLastNum(lastNum);
+	}
 	
 }

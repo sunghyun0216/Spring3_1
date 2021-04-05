@@ -47,7 +47,7 @@
 		
 		</table>
 	</div>
-	<%-- 
+	
 	<div class="container">
 	  <ul class="pagination">
 	  
@@ -79,7 +79,7 @@
 	    <button class="btn btn-success" type="submit">Search</button>
 	  </div>
 	 </form> 
-	</div> --%>
+	</div> 
   
   <a href="./${board}Insert" class="btn  btn-primary" role="button">Write</a>
   
