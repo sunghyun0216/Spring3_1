@@ -29,15 +29,20 @@
 			</thead>
 			
 			<tbody>
-			<c:forEach items="${list}" var="dto" >
-				<tr>
-					<td>${dto.num}</td>
-					<td><a href="./${board}Select?num=${dto.num}">${dto.title}</a></td>
-					<td>${dto.writer}</td>
-					<td>${dto.regDate}</td>
-					<td>${dto.hit}</td>
-				</tr>
-			</c:forEach>
+		<c:forEach items="${list}" var="dto">
+               <tr>
+                  <td>${dto.num}</td>
+                  <td><a href="./${board}Select?num=${dto.num}">
+                  <c:if test="${board eq 'qna'}">
+                  <c:forEach begin="1" end="${dto.dept}">--</c:forEach>
+                  </c:if>
+                  ${dto.title}
+                  </a></td>
+                  <td>${dto.writer}</td>
+                  <td>${dto.regDate}</td>
+                  <td>${dto.hit}</td>
+               </tr>
+            </c:forEach>
 			</tbody>
 		
 		</table>

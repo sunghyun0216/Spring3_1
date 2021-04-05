@@ -28,9 +28,9 @@
       <textarea class="form-control" rows="5" id="contents" name="contents"></textarea>
     </div>
     
-    <input type="button" id="btn" value="WRITE" class="btn btn-primary">
+    <input type="submit" id="btn" value="WRITE" class="btn btn-primary">
   </form>
 </div>
-<script type="text/javascript" src="../resources/js/insertCheck.js"></script>
+<!-- <script type="text/javascript" src="../resources/js/insertCheck.js"></script> -->
 </body>
 </html>
