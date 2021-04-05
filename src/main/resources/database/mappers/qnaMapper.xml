@@ -44,29 +44,11 @@
 		 update qna set title=#{title}, contents=#{contents} where num=#{num}
 	</update>
 	
-	<select id="getList" resultType="QnaDTO" parameterType="Pager">
-	  select * from
-	  (select rownum R, Q.* from
-		(select * from qna where
-		<choose>
-			<when test="kind == 'Writer'">
-				writer
-			</when>
-			<when test="kind == 'Contents'">
-				contents
-			</when>
-			
-			<otherwise>
-				title
-			</otherwise>
-		</choose>
-		like '%'||#{search}||'%' and num >0
-	</select>
 
-	<select id="getList" resultType="NoticeDTO" parameterType="Pager">
+	<select id="getList" resultType="QnaDTO" parameterType="Pager">
 		select * from
-			(select rownum R, N.* from
-				(select * from notice where
+			(select rownum R, Q.* from
+				(select * from qna where
 					<choose>
 						<when test="kind=='Writer'">
 							writer

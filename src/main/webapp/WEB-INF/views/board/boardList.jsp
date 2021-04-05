@@ -34,7 +34,7 @@
                   <td>${dto.num}</td>
                   <td><a href="./${board}Select?num=${dto.num}">
                   <c:if test="${board eq 'qna'}">
-                  <c:forEach begin="1" end="${dto.dept}">--</c:forEach>
+                  <c:forEach begin="1" end="${dto.dept}" >--</c:forEach>
                   </c:if>
                   ${dto.title}
                   </a></td>
