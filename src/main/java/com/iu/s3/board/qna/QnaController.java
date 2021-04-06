@@ -24,6 +24,7 @@ public class QnaController {
    @PostMapping
    public ModelAndView setUpdate(BoardDTO boardDTO, ModelAndView mv)throws Exception{
 	   int result = qnaService.setUpdate(boardDTO);
+	   
 	   if(result>0) {
 		   mv.setViewName("redirect:./qnaList");
 	   }else {
