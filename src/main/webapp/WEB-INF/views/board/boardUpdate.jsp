@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,14 +10,29 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
-	<h2> ${dto.title} </h2>
-	<form action="./boardUpdate" method="post">
-	<input type="hidden" name = "num" value="${dto.num}">
-	TITLE <input type="text" name = "title" value="${dto.title}"> <br>
-	CONTENTS <input type="text" name = "contents" value="${dto.contents}">
-	<button>Update</button>
-	</form>
-	
-	
+ 
+ <div class="container">
+ <h2>${board} Update form</h2>
+  <form id="frm" action="./${board}Update" method="post">
+  <input type="hidden" name="num" value="${param.num}">
+    <div class="form-group">
+      <label for="writer">Writer:</label>
+      <input type="text" readonly="readonly" value="${member.id}" class="form-control" id="writer" name="writer">
+    </div>
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" class="form-control" id="title" name="title" value="${dto.title}">
+    </div>
+    
+    <div class="form-group">
+      <label for="contents">Contents:</label>
+      <textarea class="form-control" rows="5" id="contents" name="contents">${dto.contents}</textarea>
+    </div>
+    
+    <input type="submit" id="btn" value="Update" class="btn btn-primary">
+  </form>
+</div>
+<script type="text/javascript" src="../resources/js/insertCheck.js"></script>
+ 
 </body>
 </html>

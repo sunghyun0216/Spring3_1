@@ -21,6 +21,50 @@ public class QnaController {
    @Autowired
    private QnaService qnaService;
    
+   @PostMapping
+   public ModelAndView setUpdate(BoardDTO boardDTO, ModelAndView mv)throws Exception{
+	   int result = qnaService.setUpdate(boardDTO);
+	   if(result>0) {
+		   mv.setViewName("redirect:./qnaList");
+	   }else {
+		    mv.addObject("msg", "수정실패");
+			mv.addObject("path", "./qnaList");
+			mv.setViewName("common/commonResult");
+	   }
+	   return mv;
+   }
+   
+   @GetMapping
+   public ModelAndView setUpdate(BoardDTO boardDTO)throws Exception{
+	   ModelAndView mv = new ModelAndView();
+	   boardDTO = qnaService.getSelect(boardDTO);
+	   mv.addObject("dto", boardDTO);
+	   mv.addObject("board", "qna");
+	   mv.setViewName("board/boardUpdate");
+	   
+	   return mv;
+   }
+   
+   
+   @PostMapping("qnaDelete")
+   public ModelAndView setDelete(QnaDTO qnaDTO)throws Exception{
+	   ModelAndView mv = new ModelAndView();
+	   int result = qnaService.setDelete(qnaDTO);
+	   
+	   String message = "삭제 실패";
+	   String path ="./qnaList";
+	   
+	   if(result>0) {
+		   message="삭제 성공";
+	   }
+	   
+	   mv.addObject("msg", message);
+	   mv.addObject("path", path);
+	   mv.setViewName("common/commonResult");
+	   
+	   return mv;
+   }
+   
    @PostMapping("qnaReply")
    public ModelAndView setReply(QnaDTO qnaDTO)throws Exception{
 	   ModelAndView mv = new ModelAndView();
