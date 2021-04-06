@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,27 +10,35 @@
 </head>
 <body>
 <c:import url="../template/header.jsp"></c:import>
- 
- <div class="container">
- <h2>${board} form</h2>
-  <form id="frm" action="./${board}Insert" method="post">
-    <div class="form-group">
-      <label for="writer">Writer:</label>
-      <input type="text" readonly="readonly" value="${member.id}" class="form-control" id="writer" name="writer">
-    </div>
-    <div class="form-group">
-      <label for="title">Title:</label>
-      <input type="text" class="form-control" id="title" name="title">
-    </div>
-    
-    <div class="form-group">
-      <label for="contents">Contents:</label>
-      <textarea class="form-control" rows="5" id="contents" name="contents"></textarea>
-    </div>
-    
-    <input type="submit" id="btn" value="WRITE" class="btn btn-primary">
-  </form>
+<h1>${board} form</h1>
+
+   <div class="container">
+      <form id="frm" action="./${board}Insert" method="post">
+         <div class="form-group">
+            <label for="writer">Writer</label> 
+             <input type="text" readonly="readonly" value="${member.id}" class="form-control myCheck" id="writer" name="writer">
+         </div>         
+         
+         <div class="form-group">
+            <label for="title">Title</label> 
+            <input type="text" class="form-control myCheck" id="title" name="title"> 
+         </div>
+         
+         <div class="form-group">
+            <label for="contents">Contents</label> 
+             <textarea class="form-control myCheck" rows="5" id="contents" name="contents"></textarea>
+         </div>
+         
+         
+        <input type="button" id="btn" value="WRITE" class="btn btn-primary">
+         
+         
+      </form>
+   </div>
+<div>
+<script type="text/javascript" src="../resources/jquery/boardInsert.js"></script>
 </div>
-<!-- <script type="text/javascript" src="../resources/js/insertCheck.js"></script> -->
+
+
 </body>
 </html>
