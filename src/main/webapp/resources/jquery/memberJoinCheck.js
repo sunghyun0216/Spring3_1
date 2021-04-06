@@ -14,20 +14,18 @@ $(".check").click(function(){
 		if(!$(this).prop("checked")){
 			result = false;
 		}
-		
 	});
 	
 	$("#all").prop("checked", result);
 	
 });
 
-	$("btn").click(function(){
-		let result = $("#all").prop("checked");
-		if(result){
-			location.href="./memberJoin";
-		}else{
-			alert("약관에 동의");
-		}
-		
-	});
 
+$("#btn").click(function(){
+	let result = $("#all").prop("checked");
+	if(result){
+		location.href="./memberJoin";
+	}else {
+		alert("약관에 동의");
+	}
+});
