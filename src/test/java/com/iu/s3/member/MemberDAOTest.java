@@ -22,6 +22,17 @@ public class MemberDAOTest extends MyAbstractTest {
 		assertNotNull(memberDTO);
 	}
 	
+	@Test
+	public void setMemberFileInsertTest()throws Exception{
+		MemberFileDTO memberFileDTO = new MemberFileDTO();
+		memberFileDTO.setId("id1");
+		memberFileDTO.setFileName("f1");
+		memberFileDTO.setOriginName("o1");
+		
+		int result =memberDAO.setFileInsert(memberFileDTO);
+		assertEquals(1, result);
+		
+	}
 	
 
 }
