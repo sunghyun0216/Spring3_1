@@ -40,8 +40,6 @@
 		
 	</resultMap>
 	
-	
-
 
 	<select id="getTotalCount" resultType="Long" parameterType="Pager">
 		select count(num) from notice

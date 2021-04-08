@@ -72,7 +72,7 @@
 					 order by ref desc, step asc) Q)
 	  			  where R between #{startRow} and #{lastRow} 
 	</select>
-
+	
 	<select id="getSelect" parameterType="BoardDTO" resultType="QnaDTO">
 		select * from qna where num=#{num}
 	</select>
@@ -83,5 +83,8 @@
 		</selectKey>
 		insert into qna values(#{num}, #{title}, #{writer}, #{contents}, 0, sysdate, #{num}, 0, 0)
 	</insert>
+	
+	
+	
 	
 </mapper>  

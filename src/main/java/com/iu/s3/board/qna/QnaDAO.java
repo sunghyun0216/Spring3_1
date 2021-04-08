@@ -14,8 +14,7 @@ import com.iu.s3.util.Pager_backUp;
 
 @Repository
 public class QnaDAO implements BoardDAO{
-	
-	
+	 
 	@Autowired
 	private SqlSession sqlSession;
 	
