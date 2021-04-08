@@ -9,7 +9,7 @@
 <c:import url="../template/bootStrap.jsp"></c:import>
 <style type="text/css">
 #sample {
-/* 	display: none; */
+	/* display: none; */
 }
 </style>
 </head>
@@ -37,12 +37,7 @@
 
 			<input type="button" id="add" value="ADD" class="btn btn-danger">
 			<input type="button" id="del" value="DELETE" class="btn btn-info">
-			<div id="files">
-
-				<div class="form-group">
-					<input type="file" class="form-control-file border" name="file" id="files">
-				</div>
-			</div>
+			<div id="files"></div>
 
 			<input type="button" id="btn" value="WRITE" class="btn btn-primary">
 		</form>
@@ -50,10 +45,8 @@
 	<div id="sample">
 		<div class="input-group">
 			<div class="custom-file">
-				<input type="file" class="custom-file-input" id="inputGroupFile04"
-					aria-describedby="inputGroupFileAddon04"> <label
-					class="custom-file-label" for="inputGroupFile04">Choose
-					file</label>
+				<input type="file"  id="inputGroupFile04"
+					class="form-control-file border" name="files">
 			</div>
 			<div class="input-group-append delete">
 				<input class="btn btn-outline-secondary" type="button"
@@ -61,11 +54,10 @@
 			</div>
 		</div>
 
+
 	</div>
 
 	<script type="text/javascript" src="../resources/jquery/boardInsert.js"></script>
-	<script type="text/javascript" src="../resources/jquery/fileAdd.js">
-		
-	</script>
+	<script type="text/javascript" src="../resources/jquery/fileAdd.js"></script>
 </body>
 </html>

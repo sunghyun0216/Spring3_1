@@ -32,6 +32,10 @@
 		insert into qna values(qna_seq.nextval, #{title}, #{writer}, #{contents}, 0, sysdate, #{ref}, #{step}, #{dept})
 	</insert>
 
+	<insert id="setFileInsert" parameterType="BoardFileDTO">
+		insert into qnaFiles values(file_seq.nextval, #{num}, #{fileName}, #{originName})
+	</insert>
+	
 	<delete id="setDelete" parameterType="BoardDTO">
 		delete qna where num=#{num}
 	</delete>
@@ -74,7 +78,10 @@
 	</select>
 	
 	<insert id="setInsert" parameterType="BoardDTO">
-		insert into qna values(qna_seq.nextval, #{title}, #{writer}, #{contents}, 0, sysdate, qna_seq.currval, 0, 0)
+		<selectKey keyProperty="num" resultType="java.lang.Long" order="BEFORE"> 
+			select qna_seq.nextval from dual
+		</selectKey>
+		insert into qna values(#{num}, #{title}, #{writer}, #{contents}, 0, sysdate, #{num}, 0, 0)
 	</insert>
 
 

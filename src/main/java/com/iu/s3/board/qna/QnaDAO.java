@@ -8,16 +8,19 @@ import org.springframework.stereotype.Repository;
 
 import com.iu.s3.board.BoardDAO;
 import com.iu.s3.board.BoardDTO;
+import com.iu.s3.board.BoardFileDTO;
 import com.iu.s3.util.Pager;
 import com.iu.s3.util.Pager_backUp;
 
 @Repository
 public class QnaDAO implements BoardDAO{
 	
+	
 	@Autowired
 	private SqlSession sqlSession;
+	
 	private final String NAMESPACE="com.iu.s3.board.qna.QnaDAO.";
-
+	
 	public int setReplyUpdate(QnaDTO qnaDTO)throws Exception{
 		return sqlSession.update(NAMESPACE+"setReplyUpdate", qnaDTO);
 	}
@@ -55,6 +58,10 @@ public class QnaDAO implements BoardDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.insert(NAMESPACE+"setInsert", boardDTO);
 	}
+	
+	public int setFileInsert(BoardFileDTO boardFileDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setFileInsert", boardFileDTO);
+	}
 
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
@@ -67,7 +74,8 @@ public class QnaDAO implements BoardDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.delete(NAMESPACE+"setDelete", boardDTO);
 	}
-	
 
+	
+	
 
 }

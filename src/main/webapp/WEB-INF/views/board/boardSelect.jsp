@@ -20,7 +20,7 @@
 	
 	<div>
 	<c:forEach items="${dto.noticeFiles}" var="file">
-		<a href="../resources/upload/${board}/${file.fileName}">#{file.originName}</a>
+		<a href="../resources/upload/${board}/${file.fileName}">${file.originName}</a>
 	</c:forEach>
 	</div>
 	

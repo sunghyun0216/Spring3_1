@@ -90,7 +90,7 @@
 
 	
 	<insert id="setInsert" parameterType="BoardDTO">
-		insert into notice values(#{num},#{title}, #{writer}, #{contents}, sysdate, 0)
+		insert into notice values(#{num},#{title}, #{writer}, #{contents},0 ,sysdate)
 	</insert>
 
 </mapper>  
