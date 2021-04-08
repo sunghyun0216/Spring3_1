@@ -83,6 +83,5 @@
 		</selectKey>
 		insert into qna values(#{num}, #{title}, #{writer}, #{contents}, 0, sysdate, #{num}, 0, 0)
 	</insert>
-
-
+	
 </mapper>  
