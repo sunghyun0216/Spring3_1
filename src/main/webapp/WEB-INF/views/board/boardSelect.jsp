@@ -12,11 +12,17 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 
-<div calss="container">
+<div class="container">
 	<h1>${board} Select Page</h1>
 	<h3>Title : ${dto.title}</h3>
 	<h3>Writer : ${dto.writer}</h3>
 	<h3>Contents : ${dto.contents}</h3>
+	
+	<div>
+	<c:forEach items="${dto.noticeFiles}" var="file">
+		<a href="../resources/upload/${board}/${file.fileName}">#{file.originName}</a>
+	</c:forEach>
+	</div>
 	
 	<a href="./${board}Update?num=${dto.num}" class="btn btn-danger">Update</a>
 	<a href="#" id="del" class="btn btn-info">Delete</a>

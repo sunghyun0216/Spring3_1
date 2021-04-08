@@ -1,17 +1,15 @@
 package com.iu.s3.board;
 
 public class BoardFileDTO {
-	private long filenum;
+	private long fileNum;
 	private long num;
 	private String fileName;
 	private String originName;
-	
-	
-	public long getFilenum() {
-		return filenum;
+	public long getFileNum() {
+		return fileNum;
 	}
-	public void setFilenum(long filenum) {
-		this.filenum = filenum;
+	public void setFileNum(long fileNum) {
+		this.fileNum = fileNum;
 	}
 	public long getNum() {
 		return num;
@@ -31,6 +29,7 @@ public class BoardFileDTO {
 	public void setOriginName(String originName) {
 		this.originName = originName;
 	}
+	
 	
 	
 	
