@@ -2,12 +2,17 @@ package com.iu.s3.board.notice;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.s3.board.BoardDTO;
+import com.iu.s3.board.BoardFileDTO;
 import com.iu.s3.board.BoardService;
 import com.iu.s3.board.qna.QnaDTO;
+import com.iu.s3.util.FileManager;
 import com.iu.s3.util.Pager;
 import com.iu.s3.util.Pager_backUp;
 
@@ -16,6 +21,10 @@ public class NoticeService implements BoardService {
 	
 	@Autowired
 	private NoticeDAO noticeDAO;
+	@Autowired
+	private FileManager fileManager;
+	@Autowired
+	private HttpSession session;
 	
 	
 	@Override
@@ -24,12 +33,28 @@ public class NoticeService implements BoardService {
 		return noticeDAO.getSelect(boardDTO);
 	}
 
-
-
 	@Override
-	public int setInsert(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return noticeDAO.setInsert(boardDTO);
+	public int setInsert(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
+			
+		int num = (int)noticeDAO.getNum();
+		boardDTO.setNum(num);
+		
+		int result = noticeDAO.setInsert(boardDTO);
+		
+		//글번호 찾기
+		
+		for(MultipartFile mf : files) {
+			BoardFileDTO boardFileDTO = new BoardFileDTO();
+			String fileName = fileManager.save("notice", mf, session);		
+			
+			boardFileDTO.setNum(num);
+			boardFileDTO.setFileName(fileName);
+			boardFileDTO.setOriginName(mf.getOriginalFilename());
+			
+			noticeDAO.setFileInsert(boardFileDTO);
+		}
+		
+		return result; // noticeDAO.setInsert(boardDTO);
 	}
 
 

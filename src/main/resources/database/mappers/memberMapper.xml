@@ -47,8 +47,8 @@
 			<result property="originName" column="originName"/>
 	</resultMap>
 	
-	<select id="memberLoginFile" resultType="MemberFileDTO" parameterType="MemeberDTO">
-		select * from memberFile where id=#{id}
-	</select>
-
+<!-- 	<select id="memberLoginFile" resultType="MemberFileDTO" parameterType="MemeberDTO"> -->
+<!-- 		select * from memberFile where id=#{id} -->
+<!-- 	</select> -->
+	
 </mapper>
