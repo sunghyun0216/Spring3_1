@@ -8,8 +8,11 @@
 			<td>${comment.writer}</td>
 			<td>${comment.contents}</td>
 			<td>${comment.regDate}</td>
+			<td><input type ="checkbox" class="del" value="${comment.commentNum}"></td>
 		</tr>
 	
 	</c:forEach>
 
 </table>
+
+<button type="button" class="btn btn-outline-danger" id="remove">Delete</button>
