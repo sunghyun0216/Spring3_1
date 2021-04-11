@@ -20,12 +20,13 @@ public class CommentsController {
 	@PostMapping("commentsDelete")
 	public void commentsDelete(int [] commentNum)throws Exception{
 		System.out.println("Start");
-		
 		System.out.println("finish");
+		
 	}
 	
 	@PostMapping("commentsInsert")
 	public ModelAndView setInsert(CommentsDTO commentsDTO)throws Exception{
+		System.out.println(commentsDTO.getWriter());
 		ModelAndView mv = new ModelAndView();
 		int result = commentsService.setInsert(commentsDTO);
 		mv.addObject("result", result);

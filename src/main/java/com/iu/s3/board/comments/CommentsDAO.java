@@ -21,4 +21,8 @@ public class CommentsDAO {
 		return sqlSession.insert(NAMESPACE+"setInsert", commentsDTO);
 	}
 	
+	public int setDelete(CommentsDTO commentsDTO)throws Exception{
+		return sqlSession.delete(NAMESPACE+"setDelete", commentsDTO);
+	}
+	
 }

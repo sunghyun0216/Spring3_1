@@ -13,5 +13,8 @@
 		insert into comments values(notice_seq.nextval, #{num}, #{writer}, #{contents}, sysdate)
 	</insert>	
 	
+	<delete id="setDelete" parameterType="CommentsDTO">
+		delete comments where num= #{num}
+	</delete>
 
 </mapper>  
