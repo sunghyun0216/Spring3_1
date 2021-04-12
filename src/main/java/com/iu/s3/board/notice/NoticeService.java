@@ -27,6 +27,21 @@ public class NoticeService implements BoardService {
 	private HttpSession session;
 	
 	
+	public int setFileDelete(BoardFileDTO boardFileDTO)throws Exception{
+		//지우기전에 파일 fileName을 print
+		//1. 조회
+		boardFileDTO = noticeDAO.getFileSelect(boardFileDTO);
+		
+		//2. table 삭제
+		int result = noticeDAO.setFileDelete(boardFileDTO);
+		
+		//3. hdd삭제
+		if(result>0) {
+			fileManager.delete("notice", boardFileDTO.getFileName(), session); 
+		}
+		return result;
+	}
+	
 	@Override
 	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
