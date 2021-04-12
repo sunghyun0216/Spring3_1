@@ -18,7 +18,7 @@
  
  <div class="container">
  <h2>${board} Update form</h2>
-  <form id="frm" action="./${board}Update" method="post">
+ <form id="frm" action="./${board}Update" method="post" enctype="multipart/form-data">
   	<input type="hidden" name="num" value="${param.num}">
     <div class="form-group">
       <label for="writer">Writer:</label>
