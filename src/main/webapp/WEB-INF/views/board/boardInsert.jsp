@@ -7,18 +7,29 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/bootStrap.jsp"></c:import>
+
+<!-- summernote -->
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
+
 <style type="text/css">
 #sample {
 	display: none;
 }
 </style>
+
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 
 	<div class="container">
 		<h2>${board}form</h2>
-		<form id="frm" action="./${board}Insert" method="post" enctype="multipart/form-data">
+		<form id="frm" action="./${board}Insert" method="post"
+			enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="writer">Writer:</label> <input type="text"
 					readonly="readonly" value="${member.id}"
@@ -36,7 +47,7 @@
 			</div>
 
 			<input type="button" id="add" value="ADD" class="btn btn-danger">
-			
+
 			<div id="files" title="0"></div>
 
 			<input type="button" id="btn" value="WRITE" class="btn btn-primary">
@@ -45,7 +56,7 @@
 	<div id="sample">
 		<div class="input-group">
 			<div class="custom-file">
-				<input type="file"  id="inputGroupFile04"
+				<input type="file" id="inputGroupFile04"
 					class="form-control-file border" name="files">
 			</div>
 			<div class="input-group-append delete">
@@ -57,5 +68,7 @@
 
 	<script type="text/javascript" src="../resources/jquery/boardInsert.js"></script>
 	<script type="text/javascript" src="../resources/jquery/fileAdd.js"></script>
+	<script type="text/javascript" src="../resources/jquery/summerFile.js">></script>
+	
 </body>
 </html>
