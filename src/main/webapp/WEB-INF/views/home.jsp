@@ -10,6 +10,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <c:import url="./template/bootStrap.jsp"></c:import>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3f2fe9a3273070493456ebbb671c20b0"></script>
 
 <link rel="stylesheet" href="./resources/css/test.css">
 <title>Home</title>
@@ -51,13 +52,16 @@
 
 </div>
 
+<div id="map" style="width:500px;height:400px;"></div>
+
 <script type="text/javascript">
-	$("#btn2").click(function(){
-		$.get("./test?num=3", function(data){
-			console.log(data);
-			$("#d2").html(data);
-		});
-	});
+var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+var options = { //지도를 생성할 때 필요한 기본 옵션
+	center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+	level: 3 //지도의 레벨(확대, 축소 정도)
+};
+
+var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
 
 	
 	
